@@ -1,11 +1,12 @@
 Package.describe({
     summary: 'Login service for stripe accounts',
-    name: 'accounts-stripe'
+    name: 'mrt:accounts-stripe',
+    version: '0.0.3',
 });
 
 Package.onUse( function (api) {
-    api.versionsFrom('1.2'); 
-    if (api.export) api.export('StripeOAuth');     
+    api.versionsFrom('1.2');
+    if (api.export) api.export('StripeOAuth');
     api.use('accounts-base', ['client', 'server']);
     api.imply('accounts-base', ['client', 'server']);
     api.use('accounts-oauth', ['client', 'server']);
@@ -17,9 +18,11 @@ Package.onUse( function (api) {
     api.use('templating', 'client');
     api.use('random', 'client');
     api.use('service-configuration', ['client', 'server']);
-  	
+
+    api.export('StripeOauth');
+
   	api.addFiles(
-    ['lib/stripe_configure.html', 'lib/stripe_configure.js', 
+    ['lib/stripe_configure.html', 'lib/stripe_configure.js',
     'lib/stripe_login_button.css'],
     'client');
 
